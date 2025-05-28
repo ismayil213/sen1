@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8" />
+<title>Sevgilim Olarsan?</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+padding: 50px;
+overflow: hidden; /* ekran xaricinə çıxmamaq üçün */
+background-color: #f0f0f0;
+margin: 0;
+height: 100vh;
+position: relative;
+}
+
+.question {
+font-size: 24px;
+text-align: center;
+margin-bottom: 20px;
+}
+
+#he, #yox {
+position: absolute;
+padding: 10px 20px;
+background: #fff;
+border-radius: 8px;
+cursor: pointer;
+font-weight: bold;
+user-select: none;
+box-shadow: 0 0 10px rgba(0,0,0,0.2);
+font-size: 24px;
+}
+
+#he {
+top: 300px;
+left: calc(50% - 20px);
+}
+
+#yox {
+top: 200px;
+left: calc(50% - 20px);
+transition: all 0.3s ease;
+}
+
+/* Ürək görünüşü */
+.heart {
+font-size: 150px;
+color: red;
+display: none;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+text-shadow: 0 0 20px #ff0000, 0 0 30px #ff0000;
+}
+</style>
+</head>
+<body>
+
+<div class="question">Sevgilim olarsan?</div>
+
+<div id="he">he</div>
+<div id="yox">yox</div>
+
+<div class="heart" id="heart">💖</div> <!-- böyük ürək -->
+
+<script>
+const he = document.getElementById('he');
+const yox = document.getElementById('yox');
+const heart = document.getElementById('heart');
+
+// "He" kliklənəndə ürək göstər
+he.addEventListener('click', () => {
+heart.style.display = 'block';
+});
+
+// "Yox" üzərinə mouse ilə gələndə qaçma
+yox.addEventListener('mouseenter', () => {
+moveYox();
+});
+
+function moveYox() {
+const maxWidth = window.innerWidth;
+const maxHeight = window.innerHeight;
+
+const newX = Math.random() * (maxWidth - yox.offsetWidth);
+const newY = Math.random() * (maxHeight - yox.offsetHeight);
+
+yox.style.left = `${newX}px`;
+yox.style.top = `${newY}px`;
+}
+</script>
+
+</body>
+</html>
